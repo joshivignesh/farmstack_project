@@ -15,3 +15,7 @@ pipenv install -r requirements.txt
 Success!
 Updated Pipfile.lock (aef8e9)!
 Installing dependencies from Pipfile.lock 
+
+To run Python App
+
+uvicorn main:app --reload
