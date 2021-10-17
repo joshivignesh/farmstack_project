@@ -18,4 +18,15 @@ Installing dependencies from Pipfile.lock
 
 To run Python App
 
+After running 
 uvicorn main:app --reload
+
+INFO:     Uvicorn running on http://127.0.0.1:8000
+
+Check in browser with URL -->  http://127.0.0.1:8000/docs
+ we should see API's with swagger
+ 
+ ![image](https://user-images.githubusercontent.com/10427100/137635868-55601707-2247-484d-895e-086b3659efb5.png)
+
+ 
+ 
