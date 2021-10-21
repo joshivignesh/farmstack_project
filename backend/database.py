@@ -2,10 +2,10 @@ from typing import Collection
 from model import Todo
 
 # Mongodb driver
-import motor.motor_asyncio 
+import motor.motor_asyncio
+from model import Todo
 
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost/27017')
-
+client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017/')
 database = client.TodoList
 collection = database.todo
 
@@ -28,10 +28,12 @@ async def create_todo(todo):
 
 async def update_todo(title, description):
     await collection.update_one({"title":title}, {"$set":{
-        "description": desc }})
+        "description": description }})
     document = await collection.find_one({"title":title})
     return document
 
-
+async def remove_todo(title):
+    document = await collection.delete_one({"title": title})
+    return document
 
 
