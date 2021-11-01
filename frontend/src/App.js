@@ -21,18 +21,15 @@ function App() {
       })
   });
 
-  const headers = {
-    'Access-Control-Allow-Origin': 'http://localhost:8000/api/todo/'
-};
+//   const headers = {
+//     'Access-Control-Allow-Origin': 'http://localhost:8000/api/todo/'
+// };
 
   // Post a todo
   const addTodoHandler = () => {
-    Axios({
-      method: 'post',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    });
-    axios.post('http://localhost:8000/api/todo/', { 'title': title, 'description': desc },{headers})
+      axios.post('http://localhost:8000/api/todo/', { 'title': title, 'description': desc })
       .then(res => console.log(res))
+
   };
 
   return (
