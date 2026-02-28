@@ -1,34 +1,107 @@
-# farmstack_project
- Farm Stack Project using Python, FastAPI, React, MongoDB
- 
- First create a MongoDB Instance using MongoDB Atlas
- 
- pip install pipenv
+# FARM Stack Project
 
-pipenv shell -- For creating Successfully created virtual environment!
+A full-stack web application using the **FARM stack** — FastAPI, React, and MongoDB — demonstrating a modern, decoupled architecture with a Python async backend, React frontend, and NoSQL database.
 
-C:\Users\username\.virtualenvs\backend-4gb77sK_
-requirements.txt found, instead of Pipfile! Converting...
+## 🚀 Features
 
+- Async REST API with FastAPI + Motor (async MongoDB driver)
+- Auto-generated **Swagger UI** at `/docs`
+- React frontend consuming the FastAPI backend
+- MongoDB Atlas for cloud-hosted NoSQL storage
+- Full CRUD operations
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | Python, FastAPI, Uvicorn |
+| Database | MongoDB (Atlas) + Motor (async driver) |
+| Frontend | React |
+| API Docs | Swagger / OpenAPI (built into FastAPI) |
+| Package mgmt | pipenv |
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Python 3.9+
+- Node.js 16+
+- A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) free cluster
+
+### Backend Setup
+
+```bash
+cd backend
+
+# Install pipenv
+pip install pipenv
+
+# Create virtual environment and install dependencies
 pipenv install -r requirements.txt
 
-Success!
-Updated Pipfile.lock (aef8e9)!
-Installing dependencies from Pipfile.lock 
+# Activate virtual environment
+pipenv shell
 
-To run Python App
-
-After running 
+# Start the API server
 uvicorn main:app --reload
+```
 
-INFO:     Uvicorn running on http://127.0.0.1:8000
+Backend runs at **http://localhost:8000**  
+Swagger UI at **http://localhost:8000/docs**
 
-Check in browser with URL -->  http://127.0.0.1:8000/docs
- we should see API's with swagger
- 
- ![image](https://user-images.githubusercontent.com/10427100/137635868-55601707-2247-484d-895e-086b3659efb5.png)
+### Frontend Setup
 
- 
- Run this command for installing motor
- 
- pip install motor
+```bash
+cd frontend
+
+npm install
+npm start
+```
+
+Frontend runs at **http://localhost:3000**
+
+## 📁 Project Structure
+
+```
+farmstack_project/
+├── backend/
+│   ├── main.py         # FastAPI app entry point
+│   ├── models.py       # MongoDB document models
+│   ├── routes/         # API route handlers
+│   └── requirements.txt
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   └── App.js
+    └── package.json
+```
+
+## 🐳 Docker (DevOps)
+
+Run the entire stack with Docker Compose:
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      MONGODB_URL: mongodb+srv://<user>:<pass>@cluster.mongodb.net/farmdb
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+```
+
+```bash
+docker-compose up --build
+```
+
+## 🔗 Author
+
+**Vignesh Joshi** — [github.com/joshivignesh](https://github.com/joshivignesh)
